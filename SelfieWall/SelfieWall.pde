@@ -20,6 +20,7 @@ AudioSample camera;
  
  float kickSize, snareSize; 
  
+ 
 Capture video;
 OpenCV opencv;
  
@@ -32,11 +33,11 @@ float ypos;
      song = minim.loadFile("song.mp3");
      camera = minim.loadSample( "camera.mp3");
    
-   fullScreen();
+  // fullScreen();
    
-   
-     video = new Capture(this, width, height);
-     opencv = new OpenCV(this, width, height);  
+   size(720, 480);
+     video = new Capture(this, 720, 480);
+     opencv = new OpenCV(this, 720, 480);  
      scale(2);
       opencv.loadImage(video);
      video.start();
@@ -66,6 +67,7 @@ float ypos;
   int numberOfOnsetsThreshold = 2; // Change the sensitivity
   
   if ( beat.isRange(lowBand, highBand, numberOfOnsetsThreshold) )
+
   {
     // saveFrame("selfie-#################.png");
     camera.trigger();
@@ -76,6 +78,7 @@ float ypos;
     ypos = 0;
     xpos++;
     ypos++;
+    
     if (xpos > width) {
       xpos = 0;
     } else if (xpos <width) {
